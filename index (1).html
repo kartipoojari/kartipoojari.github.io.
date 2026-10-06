@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kartik | B.Tech CSIT Student Portfolio</title>
+<meta name="description" content="Portfolio of Kartik, a 3rd semester B.Tech Computer Science and Information Technology student.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c1220;
+    --panel: #131b2e;
+    --panel-2: #18223a;
+    --line: #25314f;
+    --ink: #e8edf8;
+    --muted: #9aa6c3;
+    --accent: #6fb7ff;
+    --accent-2: #a98bff;
+    --head: "Outfit", "Segoe UI", system-ui, sans-serif;
+    --body: "Inter", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 400 1.05rem/1.7 var(--body); -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  .nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(12, 18, 32, .88); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 60px; gap: 16px; }
+  .brand { font: 700 1.25rem var(--head); color: var(--ink); text-decoration: none; }
+  .nav ul { display: flex; gap: 2px; list-style: none; margin: 0; padding: 0; overflow-x: auto; }
+  .nav ul a {
+    display: block; padding: 6px 12px; border-radius: 8px; white-space: nowrap;
+    color: var(--muted); text-decoration: none; font-size: .95rem; font-weight: 500;
+    transition: background .2s, color .2s;
+  }
+  .nav ul a:hover { background: var(--panel-2); color: var(--ink); }
+  @media (max-width: 640px) { .nav .wrap { flex-direction: column; align-items: flex-start; gap: 0; padding-top: 8px; padding-bottom: 6px; } }
+
+  /* Hero */
+  .hero { padding: 80px 0 64px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; gap: 36px; } .hero { padding-top: 48px; } }
+  h1 { font: 700 clamp(3rem, 8vw, 5rem)/1 var(--head); letter-spacing: -.02em; margin: 0 0 16px; }
+  .role { font: 600 1.3rem/1.35 var(--head); color: var(--accent); margin: 0 0 18px; }
+  .lead { color: var(--muted); max-width: 52ch; margin: 0 0 28px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600;
+    text-decoration: none; border: 1px solid var(--accent);
+    transition: transform .2s, background .2s, box-shadow .2s;
+  }
+  .btn.primary { background: var(--accent); color: #0c1220; }
+  .btn.primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(111, 183, 255, .7); }
+  .btn.ghost { color: var(--accent); }
+  .btn.ghost:hover { background: var(--panel-2); }
+
+  /* Editor card: the one memorable element */
+  .editor {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden;
+    box-shadow: 0 24px 50px -24px rgba(0, 0, 0, .7);
+    font: 400 .9rem/1.85 var(--mono);
+  }
+  .editor-bar {
+    display: flex; align-items: center; gap: 7px; padding: 11px 16px;
+    background: var(--panel-2); border-bottom: 1px solid var(--line); color: var(--muted); font-size: .8rem;
+  }
+  .editor-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a476c; display: block; }
+  .editor-bar span { margin-left: 8px; }
+  .code { padding: 18px 20px 22px; overflow-x: auto; white-space: pre; margin: 0; }
+  .k { color: var(--accent-2); } .s { color: #8fe3b6; } .p { color: var(--accent); } .c { color: #6b789b; }
+
+  /* Sections */
+  section { padding: 72px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 { font: 700 clamp(1.9rem, 4vw, 2.4rem)/1.15 var(--head); letter-spacing: -.01em; margin: 0 0 12px; }
+  .sub { color: var(--muted); margin: 0 0 32px; max-width: 62ch; }
+  p { margin: 0 0 16px; max-width: 68ch; }
+  h3 { font: 600 1.25rem var(--head); margin: 0 0 6px; }
+
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: start; }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; gap: 24px; } }
+  .facts { list-style: none; margin: 0; padding: 22px 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+  .facts li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .facts li:last-child { border-bottom: 0; }
+  .facts b { display: block; font-size: .85rem; color: var(--muted); font-weight: 500; }
+
+  /* Project cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 26px;
+    display: flex; flex-direction: column;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 16px 32px -20px rgba(111, 183, 255, .6); }
+  .repo { font: 500 .88rem var(--mono); color: var(--accent-2); margin: 0 0 12px; }
+  .card p { color: var(--muted); }
+  .card .link { margin-top: auto; font-weight: 600; text-decoration: none; }
+  .card .link:hover { text-decoration: underline; }
+  .pending { margin-top: auto; margin-bottom: 0; font-size: .92rem; color: var(--muted); font-style: italic; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; list-style: none; margin: 0; padding: 0; }
+  .skills li {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; font-weight: 500; position: relative; padding-left: 38px;
+    transition: transform .2s, border-color .2s, background .2s;
+  }
+  .skills li::before {
+    content: ""; position: absolute; left: 18px; top: 50%; width: 8px; height: 8px;
+    margin-top: -4px; border-radius: 50%; background: var(--accent);
+  }
+  .skills li:hover { transform: translateY(-3px); border-color: var(--accent); background: var(--panel-2); }
+
+  .goal {
+    background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent);
+    border-radius: 12px; padding: 26px 28px;
+  }
+  .goal p:last-child { margin-bottom: 0; }
+  .roles { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 18px; padding: 0; list-style: none; }
+  .roles li { background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; font-weight: 600; color: var(--accent); }
+
+  .contact-card {
+    max-width: 520px; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; padding: 28px;
+    transition: border-color .25s, box-shadow .25s;
+  }
+  .contact-card:hover { border-color: var(--accent); box-shadow: 0 16px 32px -20px rgba(111, 183, 255, .6); }
+  .contact-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+  .contact-card p { margin-bottom: 20px; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .92rem; }
+
+  /* Single page-load entrance */
+  .intro > * { opacity: 0; transform: translateY(12px); animation: rise .6s ease forwards; }
+  .intro > *:nth-child(2) { animation-delay: .08s; }
+  .intro > *:nth-child(3) { animation-delay: .16s; }
+  .intro > *:nth-child(4) { animation-delay: .24s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .cursor { display: inline-block; width: 8px; height: 1em; background: var(--ink); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation: none !important; transition: none !important; }
+    .intro > * { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#home">Kartik</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#career">Career goal</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="home">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="intro">
+        <h1>Kartik</h1>
+        <p class="role">3rd Semester B.Tech Computer Science and Information Technology Student</p>
+        <p class="lead">I enjoy coding and I am building my skills in software development and web development. I use Git and GitHub to organize and share my work.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://github.com/kartipoojari/hello-world-c" target="_blank" rel="noopener noreferrer">View hello-world-c on GitHub</a>
+          <a class="btn ghost" href="https://github.com/kartipoojari?tab=repositories" target="_blank" rel="noopener noreferrer">View all my repositories</a>
+          <a class="btn ghost" href="#projects">See my projects</a>
+        </div>
+      </div>
+
+      <div class="editor" aria-hidden="true">
+        <div class="editor-bar"><i></i><i></i><i></i><span>kartik.js</span></div>
+<pre class="code"><span class="k">const</span> <span class="p">kartik</span> = {
+  course:   <span class="s">"B.Tech CSIT"</span>,
+  semester: <span class="s">"3rd"</span>,
+  interests: [
+    <span class="s">"Coding"</span>,
+    <span class="s">"Software Development"</span>,
+    <span class="s">"Web Development"</span>,
+    <span class="s">"Git"</span>, <span class="s">"GitHub"</span>
+  ],
+  goals: [<span class="s">"Software Developer"</span>,
+          <span class="s">"Web Developer"</span>]
+};<span class="cursor"></span></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section id="about">
+    <div class="wrap">
+      <h2>About me</h2>
+      <div class="about-grid">
+        <div>
+          <p>I am Kartik, a 3rd semester B.Tech student in Computer Science and Information Technology. I am developing my skills in coding, software development, web development, Git, and GitHub.</p>
+          <p>My work so far includes a C programming repository, hands-on practice with Git and GitHub, collaboration using VS Code Live Share and GitLens, and a repository for my LeetCode solutions.</p>
+        </div>
+        <ul class="facts">
+          <li><b>Course</b>B.Tech, Computer Science and Information Technology</li>
+          <li><b>Semester</b>3rd Semester</li>
+          <li><b>Interests</b>Coding, Software Development, Web Development, Git, GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <p class="sub">These are my activities so far, all part of learning how to build and share code.</p>
+      <div class="cards">
+
+        <article class="card">
+          <h3>Hello World C</h3>
+          <p class="repo">hello-world-c</p>
+          <p>My initial C programming and GitHub project. It helped me start organizing my programming work on GitHub.</p>
+          <a class="link" href="https://github.com/kartipoojari/hello-world-c" target="_blank" rel="noopener noreferrer">View repository on GitHub</a>
+        </article>
+
+        <article class="card">
+          <h3>Git &amp; GitHub</h3>
+          <p>I created a GitHub repository, added files, committed changes, and pushed them to the remote repository on GitHub.</p>
+        </article>
+
+        <article class="card">
+          <h3>GitLens &amp; Live Share</h3>
+          <p>I used VS Code Live Share with a partner to collaborate, and used GitLens to check Git history and understand changes in a project.</p>
+        </article>
+
+        <article class="card">
+          <h3>LeetCode Solutions</h3>
+          <p class="repo">leetcode-solutions</p>
+          <p>My GitHub repository for organizing and documenting my LeetCode programming solutions. It represents my ongoing coding and problem-solving practice.</p>
+          <a class="link" href="https://github.com/kartipoojari/leetcode-solutions" target="_blank" rel="noopener noreferrer">View repository on GitHub</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <p class="sub">Skills I am building through coursework and practice.</p>
+      <ul class="skills">
+        <li>C Programming</li>
+        <li>C++</li>
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Data Structures</li>
+        <li>Git</li>
+        <li>GitHub</li>
+        <li>Problem Solving</li>
+        <li>Web Development</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Career goal -->
+  <section id="career">
+    <div class="wrap">
+      <h2>Career goal</h2>
+      <div class="goal">
+        <ul class="roles"><li>Software Developer</li><li>Web Developer</li></ul>
+        <p>My goal is to become a Software Developer and a Web Developer. To get there, I am working on improving my programming, problem-solving, and practical development skills.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <div class="contact-card">
+        <h3>Let's connect</h3>
+        <p>Interested in connecting or collaborating? You can explore my GitHub projects above.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://github.com/kartipoojari" target="_blank" rel="noopener noreferrer">Visit my GitHub profile</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Kartik, B.Tech Computer Science and Information Technology</div>
+</footer>
+
+</body>
+</html>
